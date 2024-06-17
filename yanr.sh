@@ -10,8 +10,11 @@ elif test "$current_type" = "nvidia";
 then
     notify-send "Laptop is in nvidia only mode, starting $@ without args"
     exec "$@"
+elif test "$current_type" = "integrated";
+then
+    notify-send "Laptop is in integrated graphics mode! Please try re-running your command without \`yanrun\`"
+    printf "Laptop is in integrated graphics mode! Please try re-running your command without \`yanrun\`"
 else
-    notify-send "Something went wrong, laptop is not in hybrid or dedicated mode!"
-    printf "Something went wrong, laptop is not in hybrid or dedicated mode!"
-    # exit 1
+    notify-send "Something went wrong, laptop is not in integrated, hybrid, or nvidia mode!"
+    printf "Something went wrong, laptop is not in integrated, hybrid, or nvidia mode!"
 fi
